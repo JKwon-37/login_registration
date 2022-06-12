@@ -1,8 +1,61 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model IndexViewModel
+<head>
+    <meta charset='utf-8'>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Press+Start+2P&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="~/css/style.css">
+        <title>Survey</title>
+</head>
+<body>
+    <div class="text-center">
+        <h1>Add a User</h1>
+        <form asp-action="RegisterUser" asp-controller="Home" method="post">
+            <div class="form-group">
+                <label asp-for="NewUser.FirstName"></label>
+                <span class="field-val" asp-validation-for="NewUser.FirstName"></span>
+                <input asp-for="NewUser.FirstName">
+            </div>
+            <div class="form-group">
+                <label asp-for="NewUser.LastName"></label>
+                <span class="field-val" asp-validation-for="NewUser.LastName"></span>
+                <input asp-for="NewUser.LastName">
+            </div>
+            <div class="form-group">
+                <label asp-for="NewUser.Email"></label>
+                <span class="field-val" asp-validation-for="NewUser.Email"></span>
+                <input asp-for="NewUser.Email">
+            </div>
+            <div class="form-group">
+                <label asp-for="NewUser.Pw"></label>
+                <span class="field-val" asp-validation-for="NewUser.Pw"></span>
+                <input asp-for="NewUser.Pw">
+            </div>
+            <div class="form-group">
+                <label asp-for="NewUser.ConfirmPw"></label>
+                <span class="field-val" asp-validation-for="NewUser.ConfirmPw"></span>
+                <input asp-for="NewUser.ConfirmPw">
+            </div>
+            <input type="submit" value="Register">
+        </form>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+        <h1>Login</h1>
+        <form asp-action="LoginUser" asp-controller="Home" method="post">
+            <div class="form-group">
+                <label asp-for="ReturningUser.Email"></label>
+                <span class="field-val" asp-validation-for="ReturningUser.Email"></span>
+                <input asp-for="ReturningUser.Email">
+            </div>
+            <div class="form-group">
+                <label asp-for="ReturningUser.Pw"></label>
+                <span class="field-val" asp-validation-for="ReturningUser.Pw"></span>
+                <input asp-for="ReturningUser.Pw">
+            </div>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+</body>

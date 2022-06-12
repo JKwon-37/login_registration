@@ -1,18 +1,11 @@
-html {
-  font-size: 14px;
+* {
+  font-family: 'Press Start 2P', Helvetica;
+  background-color: black;
+  color: oldlace;
+  margin: 0px;
+  padding: 0px;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: 60px;
+.field-val {
+  color: red;
 }

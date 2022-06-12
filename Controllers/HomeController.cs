@@ -1,31 +1,49 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using LoginRegistration.Models;
-
 namespace LoginRegistration.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
-    {
-        _logger = logger;
-    }
-
+    [HttpGet("")]
     public IActionResult Index()
     {
-        return View();
+        return View("Index");
     }
 
-    public IActionResult Privacy()
+    [HttpPost("register")]
+    public IActionResult RegisterUser(IndexViewModel modelData)
     {
-        return View();
+        Register? submitUser = modelData.NewUser;
+        if (ModelState.IsValid)
+        {
+            return RedirectToAction("Successful");
+        }
+        else {
+            Console.WriteLine("ModelState Invalid");
+        }
+        return Index();
     }
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
+    [HttpPost("login")]
+    public IActionResult LogInUser(IndexViewModel modelData)
     {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        SignIn? submitUser = modelData.ReturningUser;
+        // Console.WriteLine(submitUser.Email);
+        // Console.WriteLine(submitUser.Pw);
+        if (ModelState.IsValid)
+        {
+            return RedirectToAction("Successful");
+        } else {
+            Console.WriteLine("ModelState Invalid");
+        }
+        return Index();
     }
+
+    [HttpGet("success")]
+    public ViewResult Successful()
+    {
+        return View("Success");
+    }
+    
 }
